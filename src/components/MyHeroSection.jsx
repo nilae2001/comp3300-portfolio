@@ -13,7 +13,7 @@ import { TypographyH1, TypographyP } from "./ui/typography";
 
 export default function MyHero() {
   return (
-    <Card className="h-max w-full m-2 p-4 flex flex-row w-full ">
+    <Card className="h-max  m-2 p-4 flex flex-row w-full ">
       <CardContent className="flex flex-row items-center gap-4">
         <Image
           src={"/profile.png"}

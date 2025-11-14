@@ -5,38 +5,46 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
 
 export default function MyNavBar() {
   return (
-    <NavigationMenu className="sticky top-0" >
-      <NavigationMenuList>
+    <NavigationMenu
+      className={"sticky top-0 inline-flex my-2 bg-white z-1 py-2"}
+      viewport={false}
+    >
+      <NavigationMenuList className={"justify-start w-screen justify-center"}>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/">Home</NavigationMenuLink>
+          <NavigationMenuLink asChild>
+            <a href="/">Home</a>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/profile">Profile</NavigationMenuLink>
+          <NavigationMenuLink asChild>
+            <a href="/projects">Projects</a>
+          </NavigationMenuLink>
         </NavigationMenuItem>
-        
         <NavigationMenuItem>
-          <NavigationMenuTrigger href="/resume">Resume</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink>
-              <Link href="/resume/pdf">PDF</Link>
-            </NavigationMenuLink>
-            <NavigationMenuLink>
-              <Link href="/resume/latex">LATEX</Link>
-            </NavigationMenuLink>
+          <NavigationMenuTrigger>Resume</NavigationMenuTrigger>
+          <NavigationMenuContent className={"absolute"}>
+            <ul className="grid gap-2 p-2">
+              <li>
+                <NavigationMenuLink asChild>
+                  <a href="#">PDF</a>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
+                  <a href="#">LATEX</a>
+                </NavigationMenuLink>
+              </li>
+            </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/profile">Projects</NavigationMenuLink>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/login">Login</NavigationMenuLink>
+          <NavigationMenuLink asChild>
+            <a href="/">Login</a>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

@@ -11,39 +11,44 @@ import {
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
+import { createSlug } from "@/lib/utils";
 
-const projects = [
-  {
-    title: "Project One",
-    desc: "Short blurb.",
-    img: "https://placehold.co/300.png",
-    link: "#",
-  },
-  {
-    title: "Project Two",
-    desc: "Short blurb.",
-    img: "https://placehold.co/300.png",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    desc: "Short blurb.",
-    img: "https://placehold.co/300.png",
-    link: "#",
-  },
-];
-export default function ProjectPreviewCard({ cardNumber = 3 }) {
+
+export default async function ProjectPreviewCard({ cardNumber = 3 }) {
+  const projects = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`
+  )
+    .then((res) => res.json())
+    .then((data) => data.projects)
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
+
   return (
     <div className="flex flex-row w-full justify-center flex-wrap items-center gap-2">
       {projects.slice(0, cardNumber).map((project, index) => (
         <Card key={index} className="hover:scale-105 transition-transform">
           <CardContent>
-            <Skeleton className="w-full h-[300px] w-[300px] bg-gray-300 mb-4"></Skeleton>
-            {/* <Image src={project.img} alt="ALT TEXT" width={100} height={100}></Image> */}
+            {project.img ? (
+              <Image
+                src={project.img}
+                alt="ALT TEXT"
+                width={100}
+                height={100}
+              ></Image>
+            ) : (
+              <Skeleton className=" h-[300px] w-[300px] bg-gray-300 mb-4"></Skeleton>
+            )}
+
             <CardTitle className="p-1">{project.title}</CardTitle>
 
             <CardDescription className="p-1">{project.desc}</CardDescription>
-            <Button href={project.link} className="w-full">Project Link</Button>
+            <Button href={project.link} className="w-full">
+              <Link href={`/projects/${createSlug(project.title)}`}>
+              Project Link
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       ))}
