@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { TypographyH1 } from "@/components/ui/typography";
+import { toast } from "sonner";
+
 
 // Import rest of the components needed from shadcn/ui
 
@@ -44,22 +46,31 @@ export default function NewPage() {
     },
   });
 
-  function onSubmit(values) {
+  async function onSubmit(values) {
     const formData = new FormData();
     formData.append("title", values.title);
     formData.append("description", values.description);
     formData.append("img", values.img);
     formData.append("link", values.link);
     formData.append("keywords", JSON.stringify(values.keyword || []));
-    // ... // complete the rest
 
-    fetch("/api/projects/new", {
+    const response = await fetch("/api/projects/new", {
       method: "POST",
       body: formData,
     }).catch((error) => {
-      console.log(error);
+      console.error("Error submitting new project: ", error);
     });
+    // TODO: handle the response retunred and catch the possible error
 
+    if (!response.ok) {
+      toast.error("There was an error in submitting the new project.");
+      throw new Error("There was an error at the new project submission");
+    } else {
+      toast.success("New Project is Received");
+    }
+    // ... // complete the rest
+
+   
     // TODO: in future we will write the data to DB
   }
 

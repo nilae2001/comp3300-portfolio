@@ -4,6 +4,8 @@ import Image from "next/image";
 import { TypographyH1 } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+
 
 export default async function ProjectDetailPage({ params }) {
   const { slug } = await params;
@@ -20,7 +22,8 @@ export default async function ProjectDetailPage({ params }) {
     });
 
   const project = projects.find((proj) => createSlug(proj.title) === slug);
-  console.log(project);
+  if (!project) return notFound();
+
   return (
     <>
       <div className="flex flex-col justify-center items-center gap-8">

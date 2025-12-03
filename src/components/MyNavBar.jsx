@@ -13,7 +13,7 @@ export default function MyNavBar() {
       className={"sticky top-0 inline-flex my-2 bg-white z-1 py-2"}
       viewport={false}
     >
-      <NavigationMenuList className={"justify-start w-screen justify-center"}>
+      <NavigationMenuList className={"w-screen justify-center"}>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <a href="/">Home</a>

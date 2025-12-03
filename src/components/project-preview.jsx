@@ -15,6 +15,7 @@ import { createSlug } from "@/lib/utils";
 
 
 export default async function ProjectPreviewCard({ cardNumber = 3 }) {
+  console.log("projectss hit")
   const projects = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`
   )
@@ -24,6 +25,8 @@ export default async function ProjectPreviewCard({ cardNumber = 3 }) {
       console.error(error);
       return [];
     });
+
+    console.log("projectsss ", projects)
 
   return (
     <div className="flex flex-row w-full justify-center flex-wrap items-center gap-2">
