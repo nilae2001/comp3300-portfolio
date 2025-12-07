@@ -1,29 +1,32 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import ProjectPreviewCard from "@/components/project-preview";
-import { TypographyH1 } from "@/components/ui/typography";
+"use client"
 
-export default async function AllProjects() {
-  //   const projects = await fetch(
-  //     `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => data.projects)
-  //     .catch((error) => {
-  //       console.error(error);
-  //       return [];
-  //     });
+import { useUser } from "@auth0/nextjs-auth0/client";
+import useSWR from "swr";
+import ProjectCard from "@/components/project-card";
 
-  return (
-    <>
-      <div className="p-5">
-        <TypographyH1>Nila's Projects</TypographyH1>
-      </div>
-      <div className="flex items-center justify-center">
-        <ProjectPreviewCard />
-      </div>
-    </>
-  );
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function ProjectsPage() {
+    const { user } = useUser();
+    const { data: response, error } = useSWR("/api/projects", fetcher);
+
+    console.log(response)
+
+    if (!response) return <p>Loading…</p>;
+    if (error) return <p>Failed to load projects.</p>;
+
+    const projectData = response || []; 
+
+
+    return (
+        <div className="flex flex-wrap items-center justify-center bg-stone-50 font-sans dark:bg-black my-4">
+            {projectData.length > 0 ? (
+                projectData.map((project) => (
+                    <ProjectCard key={project.id} project={project} session={user} />
+                ))
+            ) : (
+                <p>No projects found</p>
+            )}
+        </div>
+    );
 }

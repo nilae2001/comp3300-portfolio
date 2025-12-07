@@ -1,25 +1,22 @@
-// GET /api/projects
-export async function GET() {
-  const projects = [
-  {
-    title: "Project One",
-    desc: "Short blurb.",
-    img: "",
-    link: "#",
-  },
-  {
-    title: "Project Two",
-    desc: "Short blurb.",
-    img: "",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    desc: "Short blurb.",
-    img: "",
-    link: "#",
-  },
-];
+import { z } from "zod";
+import { getProjects } from "@/lib/db";
+import { NextResponse } from "next/server";
 
-  return Response.json({ projects });
+const projectSchema = z.object({
+  id: z.string().min(1, "id is required"),
+  title: z.string().trim().min(1),
+  description: z.string().trim().min(1),
+  link: z.string().trim().min(1),
+  img: z.string().trim().min(1).optional(),
+  keywords: z.array(z.string().trim()).optional(),
+  createdAt: z.date().optional(),
+  updatedAt: z.date().optional(),
+});
+
+
+export async function GET() {
+
+  const projects = await getProjects();
+  return NextResponse.json(projects);
+
 }

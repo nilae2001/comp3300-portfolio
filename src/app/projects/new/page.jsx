@@ -55,6 +55,7 @@ export default function NewPage() {
     formData.append("keywords", JSON.stringify(values.keyword || []));
 
     const response = await fetch("/api/projects/new", {
+      
       method: "POST",
       body: formData,
     }).catch((error) => {

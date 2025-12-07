@@ -10,11 +10,6 @@ export async function POST(req) {
     const message = formData.get("message");
     // ... // complete the rest
 
-    // FUTURE CONCERNS - you can ignore them now
-    // TODO: (recommended) validate here again with Zod
-    // TODO: persist to DB (Prisma/Drizzle/etc.)
-    // TODO: revalidatePath("/projects") after write (if using Next cache)
-
     console.log({ contact: { name, email, message } });
 
     const { data, error } = await resend.emails.send({

@@ -1,21 +1,19 @@
-"use client";
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
-import Link from "next/link";
-import { Card } from "@/components/ui/card";
-import { TypographyP, TypographyH1 } from "@/components/ui/typography";
-import { Button } from "@/components/ui/button";
-import { useParams } from "next/navigation";
-
-export default function NotFound() {
-  const { slug } = useParams();
-
+export default function NotFound({ message = 'Could not find requested resource.' }) {
   return (
-    <Card className="flex flex-col justify-center items-center p-6">
-      <TypographyH1 className="text-lg">Page Not Found</TypographyH1>
-      <TypographyP>The Project {slug} Does Not Exist</TypographyP>
-      <Button variant="outline">
-        <Link href="/">Return Home</Link>
-      </Button>
-    </Card>
-  );
+    <div className='flex justify-center items-center bg-stone-500 min-h-[50vh]'>
+      <Card className='font-mono flex flex-col gap-8 p-8 items-center'>
+        <div className='text-4xl'>🚫404🚫</div>
+        <p>{message}</p>
+        <Button variant="outline" asChild>
+          <Link href="/">
+            Return Home
+          </Link>
+        </Button>
+      </Card>
+    </div>
+  )
 }
