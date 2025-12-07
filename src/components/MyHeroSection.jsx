@@ -13,10 +13,10 @@ const robotoMono = Roboto_Mono({
 const HERO_PLACEHOLDER_AVATAR = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
 const fallbackHero = {
     avatar: "/cvwi.jpeg",
-    fullName: "Iman Anooshehpour",
-    shortDescription: "Software Developer, Instructor, Youtuber, and Tech Content Creator",
+    fullName: "Nila Erturk",
+    shortDescription: "Full-Stack Web Developer",
     longDescription:
-        "Hello! I'm Iman (pronounced /i:man/), a name that embodies 'faith', a quality deeply rooted in my personal and professional life. My journey in tech is driven by a love for crafting seamless interfaces and delivering exceptional user experiences, bridging the gap between human-centered design and the technical prowess of Full-stack Engineering. Fascinated by the power of technology to transform ideas into tangible solutions, I thrive in blending aesthetics with functionality to create digital experiences that resonate with users. Let me know your software needs/ideas/problems; I'll take care of both Front-end and Back-end.",
+        "Hello! I'm Nila, and I'm a Full-Stack Web Development student at BCIT",
 };
 
 export default async function MyHero() {
