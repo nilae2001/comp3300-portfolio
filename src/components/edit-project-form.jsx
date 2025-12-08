@@ -30,7 +30,7 @@ export default function EditProjectForm({ project, uuid }) {
 
       if (!res.ok) throw new Error("Failed to update project");
 
-      alert("Project updated successfully!");
+      toast.success("Project updated successfully!");
       router.push(`/projects/${uuid}`);
       router.refresh();
     } catch (err) {
@@ -50,7 +50,7 @@ export default function EditProjectForm({ project, uuid }) {
 
       if (!res.ok) throw new Error("Failed to delete project");
 
-      toast.success("Project updated successfully!");
+      toast.success("Project deleted successfully!");
       router.push("/projects");
       router.refresh();
     } catch (err) {
