@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function EditProjectForm({ project, uuid }) {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function EditProjectForm({ project, uuid }) {
 
       if (!res.ok) throw new Error("Failed to delete project");
 
-      alert("Project deleted successfully!");
+      toast.success("Project updated successfully!");
       router.push("/projects");
       router.refresh();
     } catch (err) {
@@ -123,23 +124,3 @@ export default function EditProjectForm({ project, uuid }) {
     </form>
   );
 }
-// ```
-
-// ---
-
-// ### **8. Update Your .env.local**
-
-// Make sure you have:
-// ```
-// # Auth0
-// AUTH0_SECRET=your_32_char_random_string
-// AUTH0_BASE_URL=http://localhost:3000
-// AUTH0_ISSUER_BASE_URL=https://YOUR-TENANT.us.auth0.com
-// AUTH0_CLIENT_ID=your_client_id
-// AUTH0_CLIENT_SECRET=your_client_secret
-
-// # Database
-// NEON_DB_URL=postgresql://user:pass@host/db?sslmode=require
-
-// # Other
-// NEXT_PUBLIC_BASE_URL=http://localhost:3000
