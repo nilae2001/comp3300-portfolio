@@ -10,7 +10,7 @@ export default function LogoutLink() {
 
   return (
     <a
-      href="/api/auth/logout"
+      href="/auth/logout"
       className="text-red-500 underline mt-4 block"
     >
       Log Out
