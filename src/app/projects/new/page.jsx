@@ -61,7 +61,6 @@ export default function NewPage() {
     }).catch((error) => {
       console.error("Error submitting new project: ", error);
     });
-    // TODO: handle the response retunred and catch the possible error
 
     if (!response.ok) {
       toast.error("There was an error in submitting the new project.");
@@ -69,10 +68,7 @@ export default function NewPage() {
     } else {
       toast.success("New Project is Received");
     }
-    // ... // complete the rest
 
-   
-    // TODO: in future we will write the data to DB
   }
 
   return (

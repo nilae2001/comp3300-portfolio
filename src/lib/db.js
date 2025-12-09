@@ -12,39 +12,14 @@ const sql = neon(databaseUrl);
 const HERO_PLACEHOLDER_AVATAR = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
 const defaultHeroContent = {
   avatar: HERO_PLACEHOLDER_AVATAR,
-  fullName: 'Iman Anooshehpour',
-  shortDescription: 'Software Developer, Instructor, Youtuber, and Tech Content Creator',
+  fullName: 'Nila Erturk',
+  shortDescription: 'Software Developer',
   longDescription:
-    "Hello! I'm Iman (pronounced /i:man/), a name that embodies 'faith', a quality deeply rooted in my personal and professional life. My journey in tech is driven by a love for crafting seamless interfaces and delivering exceptional user experiences, bridging the gap between human-centered design and the technical prowess of Full-stack Engineering. Fascinated by the power of technology to transform ideas into tangible solutions, I thrive in blending aesthetics with functionality to create digital experiences that resonate with users. Let me know your software needs/ideas/problems; I'll take care of both Front-end and Back-end.",
+    "Hello! I'm Nila, and I am Full Stack Web Developer",
 };
 
 const seedProjects = [
-  {
-    id: randomUUID(),
-    title: "Conway's Game of Life",
-    description:
-      "A playground to play Conway's Game Of Life. Developed using React and TypeScript.",
-    img: 'https://github.com/imananoosheh/imananoosheh.github.io/blob/gh-pages/proj/conways-game-of-life/demo-screenrecord.gif?raw=true',
-    link: 'https://github.com/imananoosheh/conways-game-of-life-typescript-react',
-    keywords: ['React', 'TypeScript', 'Game Development'],
-  },
-  {
-    id: randomUUID(),
-    title: 'Github Contribution Calendar',
-    description:
-      'Automated GitHub contribution fetching and archiving. Generating Github Calendar based on the most recent data fetched.',
-    img: 'https://github.com/imananoosheh/imananoosheh.github.io/blob/gh-pages/proj/github-contributions-fetch/github-calendar-demo-screenshot.png?raw=true',
-    link: 'https://github.com/imananoosheh/github-contributions-widget',
-    keywords: ['JavaScript', 'API', 'Web Development', 'GitHub'],
-  },
-  {
-    id: randomUUID(),
-    title: 'Wordle App Replica',
-    description: 'Recreation of famous Wordle app now own by nytimes.',
-    img: 'https://github.com/imananoosheh/wordle-replica-project/blob/master/demo-screenrecord.gif?raw=true',
-    link: 'https://anoosheh.info/proj/wordle-replica-project/index.html',
-    keywords: ['JavaScript', 'HTML', 'CSS', 'Game Development'],
-  },
+  
   {
     id: randomUUID(),
     title: 'Project Four',

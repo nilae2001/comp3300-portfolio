@@ -7,7 +7,6 @@ export default async function EditProjectPage({ params }) {
   const session = await auth0.getSession();
   if (!session?.user) redirect("/auth/login");
 
-  // Await params before accessing properties
   const { uuid } = await params;
   
   const project = await getProjectById(uuid);
