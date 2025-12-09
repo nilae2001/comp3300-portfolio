@@ -1,5 +1,5 @@
 import { Card } from "./ui/card";
-import { Textarea } from "./ui/textarea";
+import LogoutLink from "./LogoutLink";
 import Image from "next/image";
 import { Roboto_Mono } from "next/font/google";
 import { getHero } from "@/lib/db";
@@ -63,6 +63,7 @@ export default async function MyHero() {
         <Link href="/dashboard" className="text-blue-500 underline">
           Go to Dashboard
         </Link>
+        <LogoutLink />
       </Card>
 
       
